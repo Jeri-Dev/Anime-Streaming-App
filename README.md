@@ -25,18 +25,6 @@ Este es un proyecto de practica para la universidad, el cual consta de Cruds de 
 - Reproduccion de cada anime en pantalla diferente
 
 
-
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
-
 ## Usage Requirements
 
 Para usar la aplicacion debe tener sql server y en el archivo 
