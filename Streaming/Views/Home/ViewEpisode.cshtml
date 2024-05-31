@@ -1,0 +1,20 @@
+﻿@model Application.ViewModels.SerieViewModel
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class=" text-center row mb-3 mt-4 ">
+    <div class="d-flex align-items-center g-5 justify-content-start">
+    <a asp-controller="Home" asp-action="Index" class=" me-5 btn btn-info">Volver</a>
+        <h2 class="text-light">
+            Viendo @Model.Name en emision
+        </h2>
+    </div>
+</div>
+
+<div class="text-center">
+
+    <iframe width="1040" height="585" src="https://www.youtube.com/embed/@Model.VideoPath?autoplay=1&loop=1" title="{VIDEO_TITLE}"
+    frameborder="0"  allow="accelerometer; autoplay; clipboard-write; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>

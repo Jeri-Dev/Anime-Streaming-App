@@ -1,0 +1,35 @@
+﻿@model List<Application.ViewModels.ProductoraViewModel>
+
+@{
+    ViewData["Title"] = "Productora";
+}
+
+<div class="row mb-3 mt-4 ">
+    <div class="col-3 offset-1">
+        <h2 class="text-light">Productoras</h2>
+
+        <a class="btn btn-success fs-6 " asp-controller="Productora" asp-action="AddView">Crear nueva Productora</a>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="row">
+        @if (Model == null || Model.Count == 0)
+        {
+            <h2 class="text-light">No Hay Productoras</h2>
+        }
+        else
+        {
+            @foreach (var productora in Model)
+            {
+                <div class="btn btn-outline-warning text-start col-5 m-3 p-2 fs-5 text-light rounded d-flex align-items-center justify-content-between">
+                    @productora.Name
+                    <div class="d-flex justify-content-between gap-3 align-items-center">
+                        <a asp-controller="Productora" asp-action="EditView" asp-route-id=@productora.Id class="btn btn-primary">Editar</a>
+                        <a asp-controller="Productora" asp-action="DeleteView" asp-route-id=@productora.Id class="btn btn-danger">Eliminar</a>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

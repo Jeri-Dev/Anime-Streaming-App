@@ -1,0 +1,48 @@
+﻿@model List<Application.ViewModels.SerieViewModel>
+
+@{
+    ViewData["Title"] = "Series";
+}
+<div class="row mb-3 mt-4 ">
+    <div class="col-3 offset-1">
+        <h2 class="text-light">
+            Series
+        </h2>
+
+        <a class="btn btn-success fs-6" asp-controller="Serie" asp-action="AddView">Crear nueva Serie</a>
+    </div>
+</div>
+
+<div class="container my-5">
+
+    <div class="row justify-content-center">
+        @if (Model == null || Model.Count == 0)
+        {
+            <h2 class="text-light">No Hay Series</h2>
+        }
+        else
+        {
+            @foreach (var anime in Model)
+            {
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-4">
+                    <div class="card p-2" style="width: 16rem;">
+                        <img src="@anime.ImagePath" class="card-img-top" alt="@anime.Name">
+                        <div class="card-body text-center">
+                            <h5 class="card-title" style="height: 40px">@anime.Name</h5>
+                            <p class="card-text">@anime.ProductoraName</p>
+                            
+                                <span class="badge rounded-pill bg-warning text-dark">@anime.GeneroName</span>
+                           
+
+                        </div>
+                        <div class="d-flex justify-content-center gap-1 align-items-center">
+                            <a asp-controller="Serie" asp-action="EditView" asp-route-id="@anime.Id" class="btn btn-primary">Editar</a>
+                            <a asp-controller="Serie" asp-action="DeleteView" asp-route-id="@anime.Id" class="btn btn-danger">Eliminar</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+

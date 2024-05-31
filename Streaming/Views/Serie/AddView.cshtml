@@ -1,0 +1,66 @@
+﻿@model Application.ViewModels.SerieViewModel
+
+@{
+    ViewData["Title"] = "Crear Serie";
+
+}
+
+<h3 class="text-light">Crear nueva Serie</h3>
+
+<div class="card-body border-2 border-warning">
+
+    <form method="post" asp-controller="Serie" asp-action="AddAction">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label text-light">Nombre: </label>
+            <input type="text" asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ImagePath" class="form-label text-light">URL de Imagen: </label>
+            <input type="text" asp-for="ImagePath" class="form-control" />
+            <span asp-validation-for="ImagePath" class="text-danger"></span>
+
+        </div>
+        <div class="mb-3">
+            <label asp-for="VideoPath" class="form-label text-light">Url de Video </label>
+            <input type="text" asp-for="VideoPath" class="form-control" />
+            <span asp-validation-for="VideoPath" class="text-danger"></span>
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ProductoraId" class="form-label text-light">Productora: </label>
+            <select asp-for="ProductoraId" class="form-select">
+                <option value="">Seleccione una opcion</option>
+                @foreach (var productora in ViewBag.Productoras)
+                {
+                    <option value="@productora.Id">@productora.Name</option>
+                }
+            </select>
+            <span asp-validation-for="ProductoraId" class="text-danger"></span>
+
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="GeneroId" class="form-label text-light">Genero : </label>
+            <select asp-for="GeneroId" class="form-select" >
+                <option value="">Seleccione una opcion</option>
+                @foreach (var genero in ViewBag.Generos)
+                {
+                    <option value="@genero.Id">@genero.Name</option>
+                }
+            </select>
+            <span asp-validation-for="GeneroId" class="text-danger"></span>
+        </div>
+
+        <input type="hidden" asp-for="Id" asp-for="SerieId" />
+
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a asp-controller="Serie" asp-action="Index" class="btn btn-danger">Volver</a>
+    </form>
+
+</div>
+
+
+

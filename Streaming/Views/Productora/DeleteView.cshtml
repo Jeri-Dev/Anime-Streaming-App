@@ -1,0 +1,13 @@
+﻿@model Application.ViewModels.ProductoraViewModel
+
+@{
+    ViewData["Title"] = "Remover Productora";
+}
+
+<div class="card p-4">
+    <h3>Esta seguro de remover la serie @Model.Name ?</h3>
+    <div class="card-body">
+        <a class="btn btn-danger" asp-controller="Productora" asp-action="DeleteAction" asp-route-id="@Model.Id">Remover</a>
+        <a class="btn btn-warning" asp-controller="Productora" asp-action="Index">Volver</a>
+    </div>
+</div>

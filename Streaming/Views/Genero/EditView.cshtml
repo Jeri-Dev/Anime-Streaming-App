@@ -1,0 +1,23 @@
+﻿@model Application.ViewModels.GeneroViewModel
+
+@{
+    ViewData["Title"] = "Editar Genero";
+}
+
+<h3 class="text-light">Editando el Genero: @Model.Name</h3>
+
+<div class="card-body">
+
+    <form method="post" asp-controller="Genero" asp-action="EditAction">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label text-light">Nombre: </label>
+            <input type="text" autofocus asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a asp-controller="Genero" asp-action="Index" class="btn btn-danger">Volver</a>
+    </form>
+
+</div>
+

@@ -1,0 +1,13 @@
+﻿@model Application.ViewModels.GeneroViewModel
+
+@{
+    ViewData["Title"] = "Remover Genero";
+}
+
+<div class="card p-4">
+    <h3>Esta seguro de remover el genero @Model.Name ?</h3>
+    <div class="card-body">
+        <a class="btn btn-danger" asp-controller="Genero" asp-action="DeleteAction" asp-route-id="@Model.Id">Remover</a>
+        <a class="btn btn-warning" asp-controller="Genero" asp-action="Index">Volver</a>
+    </div>
+</div>

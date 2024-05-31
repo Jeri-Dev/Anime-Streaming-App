@@ -1,0 +1,99 @@
+﻿@model List<Application.ViewModels.SerieViewModel>
+
+@{
+    ViewData["Title"] = "Inicio";
+}
+<div class="row mb-3 mt-4 ">
+    <div class="col-3 offset-1">
+        <h2 class="text-light">
+            Inicio
+        </h2>
+
+        <div class="align-items-center d-flex">
+            <form method="post" asp-controller="Home" asp-action="Search">
+                <div class="d-flex align-items-center input-group" style="width: 50rem">
+                    <input name="input" type="text" class="form-control" id="search" placeholder="Kimetusu no Yaiba, Konosuba, Re:Zero ..." style="width: 33rem">
+                    <button type="submit" class="btn btn-primary " style="width: 7rem"> Buscar </button>
+                </div>
+            </form>
+            <a asp-controller="Home" asp-action="OrderBy" asp-route-option="1" class="btn btn-primary ms-4" style="font-size: 12px">Ordenar de A - Z</a>
+            <a asp-controller="Home" asp-action="OrderBy" asp-route-option="2" class="btn btn-primary ms-4" style="font-size: 12px">Ordenar de Z - A</a>
+        </div>
+
+    </div>
+</div>
+
+<div class="container my-5 d-flex justify-content-center">
+    <div class="bg-white me-5" style=" width: 17vw; height : 500px;">
+        <div style="overflow-y:scroll;height : 430px;">
+            <form method="post" asp-controller="Home" asp-action="Filter">
+                <div class="container  bg-white p-2">
+                    <div class="form-group">
+                        <label><b>Productora</b></label>
+                        @foreach (var productoras in ViewBag.Productoras)
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" checked="@(productoras.Id == ViewBag.SeletedP)" type="checkbox" name="SelectedProductorasIds" value="@productoras.Id" id="SelectedProductorasIds">
+                                <label class="form-check-label" for="SelectedProductorasIds">
+                                    @productoras.Name
+                                </label>
+                            </div>
+                        }
+
+                    </div>
+
+                </div>
+                <div class="container bg-white p-2">
+                    <div class="form-group">
+                        <label><b>Genero</b></label>
+                        @foreach (var generos in ViewBag.Generos)
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="SelectedGenerosIds" value="@generos.Id" id="SelectedGenerosIds">
+                                <label class="form-check-label" for="g-@generos.Id">
+                                    @generos.Name
+                                </label>
+                            </div>
+                        }
+
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary mt-4 mb-3 col-6">Filtrar</button>
+                    </div>
+            </form>
+        </div>
+    </div>
+
+
+</div>
+<div class="row justify-content-center" style="width: 67vw; ">
+    @if (Model == null || Model.Count == 0)
+    {
+        <h2 class="text-light">Actualmente no hay ninguna serie en emision</h2>
+    }
+    else
+    {
+        @foreach (var anime in Model)
+        {
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center mb-4">
+                <div class="card p-2" style="width: 16rem; max-height : 500px">
+                    <img src="@anime.ImagePath" class="card-img-top" alt="@anime.Name">
+                    <div class="card-body text-center">
+                        <h5 class="card-title" style="height: 30px">@anime.Name</h5>
+                        <div class=" ">
+                            <p class="card-text" style="height: 25px">@anime.ProductoraName</p>
+
+                            <span class="badge card-header-pills bg-warning text-dark">@anime.GeneroName</span>
+
+                        </div>
+
+                    </div>
+                    <a asp-controller="Home" asp-action="ViewEpisode" asp-route-id="@anime.Id" class="btn btn-success">Ver</a>
+
+                </div>
+            </div>
+        }
+    }
+</div>
+</div>
+
